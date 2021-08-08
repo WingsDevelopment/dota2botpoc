@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotaMatch</name>
+    </assembly>
+    <members>
+        <member name="E:DotaMatch.DotaClient.OnLobbyCreated">
+            <summary>
+            Callback on lobby creation containing the lobby ID.
+            </summary>
+        </member>
+        <member name="E:DotaMatch.DotaClient.OnGameStarted">
+            <summary>
+            Callback on game started containing the match ID.
+            </summary>
+        </member>
+        <member name="E:DotaMatch.DotaClient.OnHeroesPicked">
+            <summary>
+            Callback one heroes picked. Returns list of hero names per team.
+            </summary>
+        </member>
+        <member name="E:DotaMatch.DotaClient.OnGameFinished">
+            <summary>
+            Callback on game completed. Returns the DotaGameResult.
+            </summary>
+        </member>
+        <member name="E:DotaMatch.DotaClient.OnStatusChanged">
+            <summary>
+            Callback with bot status messages. Contains DotaClientStatus and Message.
+            </summary>
+        </member>
+        <member name="M:DotaMatch.DotaClient.InviteToLobby(System.UInt64)">
+            <summary>
+            Invites the player to the lobby if one exists.
+            </summary>
+            <param name="steamid">Player's SteamID64</param>
+        </member>
+        <member name="M:DotaMatch.DotaClient.Create(System.String,System.String,System.String,DotaMatch.Params.DotaClientParams)">
+            <summary>
+            Initializes a DotaClient with the set account and parameters.
+            </summary>
+            <param name="username">Bot Account Username</param>
+            <param name="password">Bot Account Password</param>
+            <param name="SteamAPIKey">Steam API Key for requests</param>
+            <param name="parameters">Custom Client Parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotaMatch.DotaClient.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a Dota 2 Game Coordinator Bot.
+            Bot accounts must have SteamGuard OFF.
+            </summary>
+            <param name="user">Bot Username</param>
+            <param name="pass">Bot Password</param>
+            <param name="APIKey">Steam Api Key</param>
+        </member>
+        <member name="M:DotaMatch.DotaClient.SetParams(DotaMatch.Params.DotaClientParams)">
+            <summary>
+            Sets the DotaClient parameters.
+            </summary>
+            <param name="parameters">Client Parameters</param>
+        </member>
+        <member name="M:DotaMatch.DotaClient.Connect">
+            <summary>
+            Connects the bot to the Game Coordinator.
+            </summary>
+        </member>
+        <member name="M:DotaMatch.DotaClient.Reset">
+            <summary>
+            Resets the dota 2 bot in preperation for a new lobby to be created
+            </summary>
+        </member>
+        <member name="M:DotaMatch.DotaClient.CreateLobby(System.String,System.String,DotaMatch.Params.DotaLobbyParams)">
+            <summary>
+            Creates a custom lobby and waits for the specified DotaLobbyParams to be met.
+            Starts the match.
+            Waits for the match to complete.
+            </summary>
+            <param name="LobbyName">Name of lobby</param>
+            <param name="LobbyPassword">Lobby Password</param>
+            <param name="parameters">Lobby Start Parameters</param>
+        </member>
+        <member name="M:DotaMatch.Params.DotaLobbyParams.hasAllPlayers(System.Int32)">
+            <summary>
+            Checks if the ready player count is = to readyPlayers
+            </summary>
+            <param name="readyPlayers">Number of players required to start</param>
+            <returns>True if the parameter matches the number of ready players</returns>
+        </member>
+        <member name="M:DotaMatch.Params.DotaLobbyParams.isReadyPlayer(Dota2.GC.Dota.Internal.CDOTALobbyMember)">
+            <summary>
+            Checks if the specified player is in the lobby and in the correct slot.
+            </summary>
+            <param name="member">Dota Lobby Member</param>
+            <returns>True if the player is ready</returns>
+        </member>
+        <member name="M:DotaMatch.Params.DotaLobbyParams.#ctor(System.UInt64[],System.UInt64[])">
+            <summary>
+            Initializes new lobby params
+            </summary>
+            <param name="Radiant">List of radiant steamid64s</param>
+            <param name="Dire">List of dire steamid64s</param>
+        </member>
+        <member name="M:DotaMatch.Params.DotaLobbyParams.#ctor(System.Collections.Generic.List{System.UInt64},System.Collections.Generic.List{System.UInt64})">
+            <summary>
+            Initializes new lobby params
+            </summary>
+            <param name="Radiant">List of radiant steamid64s</param>
+            <param name="Dire">List of dire steamid64s</param>
+        </member>
+        <member name="M:DotaMatch.SteamAPI.SteamApiRequest.getHeroData(System.String)">
+            <summary>
+            Get Dota 2 hero information table. (Name/Id).
+            </summary>
+            <param name="APIKey">Steam API Key</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
